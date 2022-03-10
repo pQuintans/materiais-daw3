@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula de 10 Março</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body id="page" onload="verifyHour()">
+    <div class="main-content">
+        <p>Teste de troca de cores de acordo com a hora</p>
+        <p>A cor mudará as 18</p>
+    </div>
+
+
+    <script type="text/javascript">
+        function verifyHour() {
+            var page = document.getElementById('page');
+            var hour = new Date().getMinutes();
+
+            if (hour >= 34) {
+                page.style.background = "rgb(60, 64, 67)";
+                page.style.color = "#fefefe";
+            } else {
+                page.style.backgroundColor = "white";
+                page.style.color = "black";
+            }
+        }
+    </script>
+</body>
+</html>

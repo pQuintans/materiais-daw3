@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #fundo {
+      height: 50px;
+      width: 50px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <p>Capacitação:</p>
+  <input type="range" value="0" min="0" max="10" name="capacitacao" id="capacitacao" onchange="exibeValor()">
+  <span id="valor">0</span>
+  <br><br>
+  Cor preferida:</p>
+  <input type="color" id="corPreferida" onchange="exibirCor()">
+  <br><br>
+  <span id="texto">Cor do texto</span>
+  <div id="fundo"></div>
+  <br><br> 
+  <input type="text" maxlength="10" onkeyup="contarCaracteres()" id="nome">
+  <span id="numCaracteres">0</span> caracteres /
+  <span id="numCaracteresRest">10</span> caracteres restantes
+
+
+  <script type="text/javascript">
+    function exibeValor() {
+      var valor = document.getElementById("capacitacao").value;
+      document.getElementById('valor').textContent = valor;
+    }
+
+    function exibirCor() {
+      var cor = document.getElementById('corPreferida').value;
+      document.getElementById('fundo').style.backgroundColor = cor;
+    }
+
+    function contarCaracteres() {
+      const TAM_MAX = 10;
+      var texto = document.getElementById('nome').value;
+      var numChar = texto.length;
+
+      document.getElementById('numCaracteres').textContent = numChar;
+      document.getElementById('numCaracteresRest').textContent = TAM_MAX - numChar;
+    }
+  </script>
+</body>
+</html>
