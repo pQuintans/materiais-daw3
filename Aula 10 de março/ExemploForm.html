@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +14,7 @@
     }
   </style>
 </head>
+
 <body>
   <p>Capacitação:</p>
   <input type="range" value="0" min="0" max="10" name="capacitacao" id="capacitacao" onchange="exibeValor()">
@@ -23,18 +25,23 @@
   <br><br>
   <span id="texto">Cor do texto</span>
   <div id="fundo"></div>
-  <br><br> 
+  <br><br>
   <input type="text" maxlength="10" onkeyup="contarCaracteres()" id="nome">
   <span id="numCaracteres">0</span> caracteres /
   <span id="numCaracteresRest">10</span> caracteres restantes
 
+  <br><br>
+
+  <span id="count">0</span>
+  <button id="countPlus" onClick="somar()">+</button>
+  <button id="countMinus" onClick="subtrair()">-</button>
 
   <script type="text/javascript">
     function exibeValor() {
       var valor = document.getElementById("capacitacao").value;
       document.getElementById('valor').textContent = valor;
     }
-
+    
     function exibirCor() {
       var cor = document.getElementById('corPreferida').value;
       document.getElementById('fundo').style.backgroundColor = cor;
@@ -47,6 +54,16 @@
 
       document.getElementById('numCaracteres').textContent = numChar;
       document.getElementById('numCaracteresRest').textContent = TAM_MAX - numChar;
+    }
+
+    function somar() {
+      var value = document.getElementById('count').innerHTML;
+      value++;
+    }
+
+    function subtrair() {
+      var value = document.getElementById('count').innerHTML;
+      value--;
     }
   </script>
 </body>
