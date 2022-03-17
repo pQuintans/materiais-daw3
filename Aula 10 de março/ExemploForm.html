@@ -41,7 +41,7 @@
       var valor = document.getElementById("capacitacao").value;
       document.getElementById('valor').textContent = valor;
     }
-    
+
     function exibirCor() {
       var cor = document.getElementById('corPreferida').value;
       document.getElementById('fundo').style.backgroundColor = cor;
@@ -57,13 +57,13 @@
     }
 
     function somar() {
-      var value = document.getElementById('count').innerHTML;
-      value++;
+      var span = document.getElementById('count');
+      span.textContent = parseInt(span.textContent) + 1;
     }
 
     function subtrair() {
-      var value = document.getElementById('count').innerHTML;
-      value--;
+      var value = parseInt(document.getElementById('count').textContent);
+      value-1;
     }
   </script>
 </body>
