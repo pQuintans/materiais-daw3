@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo de Validação de Formuçarios</title>
+</head>
+<body>
+  <form name="data">
+    Nome completo: <br>
+    <input type="text" name="tx_name">
+    <br><br>
+    E-mail: <br>
+    <input type="text" name="tx_email">
+    <br><br>
+    Mensagem: <br>
+    <textarea name="tx_message"></textarea>
+    <br><br>
+    <input type="button" value="enviar" onclick="enviarDados()"></input>
+  </form>
+
+  <script>
+    function enviarDados(){
+      error = false;
+      if(document.data.tx_name.value == "" || document.data.tx_name.length < 8) {
+        alert("Preencha campo NOME corretamente!");
+        if (!error) {
+          document.data.tx_name.focus();
+          error = true;
+        }
+      }
+
+      if (document.data.tx_email.value=="" || document.data.tx_email.value.indexOf('@g.unicamp.br') == -1 || document.data.tx_email.value.indexOf('.') == -1) {
+        alert("Preencha o campo E-MAIL corretamente");
+        if(!error) {
+          document.data.tx_email.focus();
+          error = true;
+        }
+      }
+
+      if(document.data.tx_message.value == "" || document.data.tx_message.value.length < 20){
+        alert("Preencha o campo MENSAGEM corretamente");
+        if (!error) {
+          document.data.tx_message.focus();
+          error = true;
+        }
+      }
+
+      if(error) {
+        return false;
+      } else {
+        document.data.submit();
+      }
+    }
+  </script>
+</body>
+</html>
