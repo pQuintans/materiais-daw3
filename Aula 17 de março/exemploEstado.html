@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo Estado - Cidade</title>
+</head>
+<body>
+  <form>
+    Estado: <br>
+    <select name="estado" id="state" onchange="load()">
+      <option></option>
+      <option value="SP">SP</option>
+      <option value="MG">MG</option>
+      <option value="RJ">RJ</option>
+    </select> 
+  
+    <br><br>
+    
+    Cidade: <br>
+    <select name="cidade" id="cities">
+  
+    </select>
+  </form>
+
+  <script type="text/javascript">
+    function load() {
+      state = document.getElementById('state').value;
+      city = document.getElementById('cities');
+
+      cleanSelect();
+
+      var cities = [];
+
+      if(state == "SP") {
+        cities = ["Limeira", "Campinas", "Valinhos"]
+      } else if (state == "MG") {
+        cities = ["Belo Horizonte", "Tiradentes", "Ouro Preto", "Montes Claros", "Uberlândia"]
+      } else if (state == "RJ") {
+        cities = ["Rio de Janeiro", "Petrópolis"]
+      }
+        
+      for(i = 0; i < cities.length; i++) {          
+        option = document.createElement("option");
+        option.value = i+1;
+        option.text = cities[i];
+        city.add(option);
+      }
+    }
+
+    function cleanSelect() {
+      var cities = document.getElementById('cities');
+      while (cities.length) {
+        cities.remove(0);
+      }
+    }
+  </script>
+  
+</body>
+</html>
