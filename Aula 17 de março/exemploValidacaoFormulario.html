@@ -5,38 +5,202 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exemplo de Validação de Formuçarios</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    p {
+      display: inline-block;
+    }
+    
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.404);
+    }
+
+    input[type="text"],
+    textarea {
+      border-radius: 0.5rem;
+      box-shadow: 1px 1px 5px gray;
+      border: none;
+      resize: none;
+    }
+
+    textarea {
+      height: 50px;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .button-group input {
+      width: 30%;
+      border-radius: 15px;
+      border: none;
+      padding: 15px;
+      background: #1a73e8;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .input {
+      width: 200px;
+      padding: 10px;
+      margin-top: 5px;
+    }  
+
+    textarea.input {
+      width: 438px;
+      padding: 10px;
+      margin-top: 5px;
+    }
+
+    .radio-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .radio {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .radio p,
+    .radio input {
+      height: 20px;
+      margin: 0;
+    }
+
+    .basic-data-group,
+    .register-code-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .register-code,
+    .basic-data {
+      display: none;
+    }
+    
+    .email input {
+      margin-top: 10px;
+      padding: 10px;
+      width: calc(100% - 20px);
+    }
+  </style>
 </head>
-<body>
-  <form name="data">
-    Nome completo: <br>
-    <input type="text" name="tx_name">
-    <br><br>
-    E-mail: <br>
-    <input type="text" name="tx_email">
-    <br><br>
-    Mensagem: <br>
-    <textarea name="tx_message"></textarea>
-    <br><br>
-    <input type="button" value="enviar" onclick="enviarDados()"></input>
+<body onload="pageConfig()">
+  <form name="data" class="form">
+    <div class="radio-group">
+      <div class="radio">
+        <p>Pessoa Física:</p>  
+        <input type="radio" name="radioGroup" value="PF" onchange="verifyType(this.value)" checked id="PF">
+      </div>
+      <div class="radio">
+        <p>Pessoa Jurídica:</p> 
+        <input type="radio" name="radioGroup" value="PJ" onchange="verifyType(this.value)">
+      </div>
+    </div>
+    <div class="basic-data-group">
+      <div class="basic-data"  id="name">      
+        Nome: <br>
+        <input type="text" id="tx_name" class="input">
+      </div>      
+      <div class="basic-data" id="socialPropouse">      
+        Razão Social: <br>
+        <input type="text" id="tx_socialPropouse" class="input">
+      </div>      
+      <div class="register-code" id="cpf">
+        CPF: <br>
+        <input type="text" id="tx_cpf" class="input">
+      </div>
+      <div class="register-code" id="cnpj">
+        CNPJ: <br>
+        <input type="text" id="tx_cnpj" class="input">
+      </div>
+    </div>
+    <div class="email">
+      E-mail: <br>
+      <input type="text" id="email" class="input">
+    </div>
+    <div class="message">
+        Mensagem: <br>
+        <textarea name="tx_message" class="input"></textarea>
+    </div>
+    <div class="button-group">
+      <input type="button" value="Enviar" onclick="sumbitData()"></input>
+      <input type="button" value="Redefinir" onclick="resetDatafields()"></input>
+    </div>
   </form>
 
   <script>
-    function enviarDados(){
+    function sumbitData(){
       error = false;
-      if(document.data.tx_name.value == "" || document.data.tx_name.length < 8) {
-        alert("Preencha campo NOME corretamente!");
-        if (!error) {
-          document.data.tx_name.focus();
-          error = true;
+      if (document.getElementById('PF').checked) {
+        if(document.getElementById('tx_name').value == "") {
+          alert("Preencha campo NOME corretamente");
+          if (!error) {
+            document.getElementById('tx_name').focus();
+            error = true;
+          }
+        }   
+
+        if(document.getElementById('tx_cpf').value == "") {
+          alert("Preencha o campo CPF corretamente");
+            if(!error) {
+              document.getElementById('tx_cpf').focus();
+              error = true;
+            }
+        }
+      } else {
+        if(document.getElementById('tx_socialPropouse').value == "") {
+          alert("Preencha campo RAZÃO SOCIAL corretamente");
+          if (!error) {
+            document.getElementById('tx_socialPropouse').focus();
+            error = true;
+          }
+        }   
+
+        if(document.getElementById('tx_cnpj').value == "") {
+          alert("Preencha o campo CPF corretamente");
+            if(!error) {
+              document.getElementById('tx_cnpj').focus();
+              error = true;
+            }
         }
       }
 
-      if (document.data.tx_email.value=="" || document.data.tx_email.value.indexOf('@g.unicamp.br') == -1 || document.data.tx_email.value.indexOf('.') == -1) {
-        alert("Preencha o campo E-MAIL corretamente");
-        if(!error) {
-          document.data.tx_email.focus();
-          error = true;
-        }
+      if (document.getElementById('email').value=="" || document.getElementById('email').value.indexOf('@g.unicamp.br') == -1 || document.getElementById('email').value.indexOf('.') == -1) {
+          alert("Preencha o campo E-MAIL corretamente");
+          if(!error) {
+            document.getElementById('email').focus();
+            error = true;
+          }
       }
 
       if(document.data.tx_message.value == "" || document.data.tx_message.value.length < 20){
@@ -52,6 +216,33 @@
       } else {
         document.data.submit();
       }
+    }
+
+    function resetDatafields(){
+      document.getElementById('tx_name').value = ""
+      document.getElementById('email').value = ""
+      document.data.tx_message.value = ""
+    }
+
+    function verifyType(type) {
+      if (type == "PF") {
+        document.getElementById('cpf').style.display = "inline";
+        document.getElementById('name').style.display = "inline";
+        document.getElementById('cnpj').style.display = "none";
+        document.getElementById('socialPropouse').style.display = "none";
+      } else {
+        document.getElementById('cpf').style.display = "none";
+        document.getElementById('name').style.display = "none";
+        document.getElementById('cnpj').style.display = "inline";
+        document.getElementById('socialPropouse').style.display = "inline";
+      }
+    }
+
+    function pageConfig() {
+        document.getElementById('cpf').style.display = "inline";
+        document.getElementById('name').style.display = "inline";
+        document.getElementById('cnpj').style.display = "none";
+        document.getElementById('socialPropouse').style.display = "none";
     }
   </script>
 </body>
