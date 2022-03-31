@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo Query Selector 2</title>
+</head>
+<body>
+  Adicionando elementos com querySelector
+
+  <ul>
+    <li>Adicione elementos nesta lista</li>
+  </ul>
+  Número <input type="radio" name="opcao" id="radioNumber" onclick="changeFieldType()">
+  Texto <input type="radio" name="opcao" id="radioText" onclick="changeFieldType()">
+  <br><br>
+
+  <input id='value' type="text" placeholder="Texto do elemento">
+  <button onclick="add()">Adicionar elemento</button>
+
+  <script type="text/javascript">
+    count = 'li1';
+    function add() {
+      var value = document.querySelector('#value').value;
+      var myLi = document.createElement('li');
+      var deleteButton = document.createElement('button');
+            
+      myLi.id = count;
+      myLi.innerHTML = `<button id=${count} onclick="remove(this.id)">-</button> ${value}`;
+      count = 'li' + (parseInt(count.slice(-1)) + 1);
+      document.querySelector('ul').appendChild(myLi)
+    }
+
+    function changeFieldType() {
+      radioNumber = document.querySelector('#radioNumber');
+      value = document.querySelector('#value');
+
+      if(radioNumber.checked) {
+        value.setAttribute("type", "number");
+        value.setAttribute("size", "2");
+      } else {
+        value.setAttribute("type", "text");
+        value.setAttribute("size", "50");
+      }
+    }
+
+    function remove(id) {
+      document.querySelector('#' + id).remove();
+    }
+  </script>
+</body>
+</html>
