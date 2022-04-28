@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="botao1" onclick="msg1()">ok1</button>
+  <button id="botao2" onclick="msg2()">ok2</button>
+
+  <script type="text/javascript">
+    var okBtn = document.getElementById('botao1')
+
+    okBtn.addEventListener('click', () => {
+      alert('Alerta do botão 1!')
+    })
+
+    function myFunc() {
+      alert('Alert do botão 2!')
+    }
+
+    document.querySelector('#botao2').addEventListener('click', myFunc)
+    document.querySelector('#botao2').removeEventListener('click', myFunc)
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body onload="identifyStudent()">
+  <p>Cadastro de RA</p>
+  <p id="aluno"></p>
+
+  <input id="ra" type="text">
+  <button onclick="setRaCookie()">Gravar</button>
+
+  <br><br>
+
+  <button onclick="getRaCookie()">Ler Ra</button>
+  <button onclick="removeRaCookie()">Remover Ra</button>
+
+  <script>
+    function identifyStudent() {
+      if(localStorage.ra != null) { 
+        document.getElementById("aluno").innerText = `Olá, ${localStorage.ra}`
+      } else {
+        document.getElementById("aluno").innerText = ""
+      }
+    }
+
+    function setRaCookie() {
+      localStorage.setItem("ra", document.getElementById("ra").value)
+      alert("RA gravado.")
+      ra.value = ""
+      identifyStudent()
+    }
+
+    function getRaCookie() {
+      localStorage.ra != null ? alert(`RA gravado: ${localStorage.ra}`) : alert("Nenhum RA gravado")
+    }
+
+    function removeRaCookie() {
+      localStorage.removeItem("ra")
+      alert("RA removido.")
+      identifyStudent()
+    }
+  </script>
+</body>
+</html>
