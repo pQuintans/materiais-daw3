@@ -11,22 +11,12 @@
   <title>Home</title>
 </head>
 <body>
-  
+  <h2>Controle de Alunos</h2>
+  <div>
+    <form>
+      <input type="button" name="Cadastrar" value="Cadastrar" onclick="window.open('cadastra.php', '_top');"> <br><br>
+      <input type="button" name="Consultar" value="Consultar" onclick="window.open('consulta.php', '_top');">
+    </form>
+  </div>
 </body>
 </html>
-
-<?php
-  if(isset($_SESSION["logged"])) {
-    echo "
-    <div>
-      Bem vindo " . $_SESSION["name"] . "!" .
-    "
-    <a href='logout.php'>Logout</a>
-    </div>";
-  } else {
-    echo "
-    <span>
-      Acesso não autorizado
-    </span>";
-  }
-?>

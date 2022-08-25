@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  <a href="index.html">Home</a>
+  <a href="inicio.php">Home</a>
   <hr>
   <h2>Consulta de Alunos</h2>
 

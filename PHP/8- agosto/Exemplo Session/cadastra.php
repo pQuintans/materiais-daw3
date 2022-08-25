@@ -7,7 +7,7 @@
   <title>Cadastro</title>
 </head>
 <body>
-  <p>Home</p>
+  <a href="inicio.php">Home</a>
   <hr>
   <h1>Cadastro de alunos</h1><br>
   <form method="post">
