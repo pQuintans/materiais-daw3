@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    array = [{number: 1, color: 'yellow'}, {number: 2, color: 'yellow'}, {number: 3, color: 'yellow'}, {number: 4, color: 'yellow'},
+            {number: 5, color: 'yellow'}, {number: 6, color: 'yellow'}, {number: 7, color: 'yellow'}, {number: 8, color: 'yellow'},
+            {number: 9, color: 'yellow'}, {number: 10, color: 'yellow'}, {number: 11, color: 'yellow'}, {number: 12, color: 'yellow'},
+            {number: 13, color: 'yellow'}, {number: 14, color: 'yellow'}, {number: 15, color: 'yellow'}, {number: 16, color: 'yellow'},
+            {number: 17, color: 'yellow'}, {number: 18, color: 'yellow'}, {number: 19, color: 'yellow'}, {number: 20, color: 'yellow'},
+            {number: 21, color: 'yellow'}, {number: 22, color: 'yellow'}, {number: 23, color: 'yellow'}, {number: 24, color: 'yellow'},
+            //{number: 9, color: 'yellow'}, {number: 10, color: 'yellow'}, {number: 11, color: 'yellow'}, {number: 12, color: 'yellow'},
+            //{number: 13, color: 'yellow'}, {number: 14, color: 'yellow'}, {number: 15, color: 'yellow'}, {number: 16, color: 'yellow'},
+  ]
+
+  function sliceLockersInStepsOfTwo(ar, start, end) {
+    var response = [];
+    if(end > ar.length) {
+      return
+    }
+
+    for(i=start; i<=end; i+=2) {
+      response.push(ar[i]);
+    }
+
+    return response;
+  }
+
+  function parseLockers(lockers) {
+    const lockersSplited = []
+    let i = 0
+    let times = 0;
+    let sum = 1;
+    while (i < lockers.length) {
+      if(times > 0) {
+        times = 0;
+        sum = 7;
+      } else {
+        sum = 1;
+        times++;
+      }
+      var sliced = sliceLockersInStepsOfTwo(lockers, i, i+6);
+      if(sliced == undefined) break;
+      lockersSplited.push(sliced)
+      i += sum
+    }
+    
+    return lockersSplited
+  }
+
+  console.log(parseLockers(array))
+  
+  </script>
+</head>
+<body>
+    <button onclick="">CLICAR</button>
+</body>
+</html>
