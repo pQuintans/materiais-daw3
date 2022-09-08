@@ -38,15 +38,22 @@
     try {
       $stmt->execute();
 
-      echo "<form method='post'> <table border='1px'> <tr> <th></th> <th>Código</th> <th>Nome da Música</th> <th>Nome da Banda</th> </tr>";
+      echo "<form method='post'> <table border='1px'> <tr> <th></th> <th>Código</th> <th>Nome da Música</th> <th>Nome da Banda</th> <th>Imagem</th> </tr>";
       while ($row = $stmt->fetch()) {
         echo "<tr> <td> <input type='radio' name='codMusica' value='" . $row['codigo'] . "'>";
         echo "<input type='hidden' name='nome' value='" . $row['nome'] . "'>";
         echo "<td>" . $row['codigo'] . "</td>";
         echo "<td>" . $row['nome'] . "</td>";
-        echo "<td>" . $row['banda'] . "</td> </tr>";
-      }
+        echo "<td>" . $row['banda'] . "</td>";
 
+        if($row['foto'] == null) {
+          echo "<td align='center'>-</td>";
+        } else {
+          echo "<td align='center'><img src='data:image;base64,".base64_encode($row['foto'])."' width='50px' heigh='50px'></td>";
+        }
+
+        echo "</tr>";
+      }
       echo "</table><br>";
 
       echo "<button type='submit' formaction='remove.php'>Excluir musica</button>";
